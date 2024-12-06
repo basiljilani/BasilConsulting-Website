@@ -28,7 +28,7 @@ const capabilities: Capability[] = [
   }
 ];
 
-const Products: React.FC = () => {
+export function Products(): JSX.Element {
   useEffect(() => {
     if ((window as any).particlesJS) {
       (window as any).particlesJS('particles-js', {
@@ -292,6 +292,4 @@ const Products: React.FC = () => {
       </div>
     </div>
   );
-};
-
-export default Products;
+}
