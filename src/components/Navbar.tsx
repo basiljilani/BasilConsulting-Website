@@ -188,9 +188,9 @@ export default function Navbar() {
 
                 <div className="flex-1 p-6 bg-gradient-to-br from-white via-gray-50/50 to-blue-50/30">
                   <h3 className="text-lg font-semibold text-gray-900 mb-4">Featured Products</h3>
-                  <div>
+                  <div className="space-y-2">
                     <Link 
-                      to="/products" 
+                      to="/fintech-pulse" 
                       className="group block"
                       onClick={() => setShowCategories(false)}
                     >
@@ -198,6 +198,19 @@ export default function Navbar() {
                         <div>
                           <p className="text-sm font-medium text-blue-600 group-hover:text-blue-700">FinTech Pulse Network</p>
                           <p className="mt-1 text-sm text-gray-500 group-hover:text-gray-600">Financial intelligence platform</p>
+                        </div>
+                      </div>
+                    </Link>
+
+                    <Link 
+                      to="/basil-ai" 
+                      className="group block"
+                      onClick={() => setShowCategories(false)}
+                    >
+                      <div className="p-4 rounded-lg hover:bg-white transition-all duration-200 transform hover:shadow-lg hover:-translate-y-0.5">
+                        <div>
+                          <p className="text-sm font-medium text-blue-600 group-hover:text-blue-700">Basil AI</p>
+                          <p className="mt-1 text-sm text-gray-500 group-hover:text-gray-600">Advanced AI solutions</p>
                         </div>
                       </div>
                     </Link>

@@ -7,6 +7,8 @@ import { About } from './pages/About';
 import { Contact } from './components/Contact';
 import { Team } from './pages/Team';
 import { Products } from './pages/Products';
+import { BasilAI } from './pages/BasilAI';
+import { FinTechPulse } from './pages/FinTechPulse';
 import { Services } from './pages/Services';
 import { Partners } from './pages/Partners';
 import { Newsletter } from './pages/Newsletter';
@@ -35,6 +37,8 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/team" element={<Team />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/basil-ai" element={<BasilAI />} />
+            <Route path="/fintech-pulse" element={<FinTechPulse />} />
             <Route path="/services" element={<Services />} />
             <Route path="/partners" element={<Partners />} />
             <Route path="/newsletter" element={<Newsletter />} />
@@ -48,7 +52,7 @@ function App() {
             <Route path="/admin/team" element={<TeamManagement />} />
           </Routes>
         </main>
-        <Footer show={!isAdminRoute && path !== '/contact'} />
+        <Footer show={!isAdminRoute && path !== '/contact' && path !== '/products'} />
       </div>
     </Router>
   );
