@@ -148,7 +148,7 @@ const Products: React.FC = () => {
                   Learn More →
                 </Link>
                 <a 
-                  href="https://github.com/basiljilani/BasilConsulting-Website" 
+                  href="https://main.d36bfg0wwu7y8d.amplifyapp.com/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="border border-white text-white px-6 py-2 rounded hover:bg-white hover:text-black transition"
