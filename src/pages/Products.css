@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap');
+
+@font-face {
+  font-family: 'Evil Empire';
+  src: url('/fonts/Evil-Empire.otf') format('opentype');
+}
+
+.evil-empire-text {
+  font-family: 'Evil Empire', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.neural-network-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.neural-network-animation::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.8) 100%);
+  z-index: 1;
+  opacity: 0.3;
+}
+
+.neural-network-animation canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+}
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: 1;
+}
+
+/* Semi-transparent overlay for content */
+.content-overlay {
+  position: relative;
+  z-index: 2;
+  background-color: transparent;
+}
