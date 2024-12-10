@@ -162,14 +162,20 @@ export function Terms() {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </motion.button>
               </Link>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center px-6 py-3 rounded-lg border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-50 transition-colors"
+              <a
+                href="/basil-consulting-terms-of-services.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <Download className="mr-2 h-5 w-5" />
-                Download Terms
-              </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center px-6 py-3 rounded-lg border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-50 transition-colors"
+                >
+                  <Download className="mr-2 h-5 w-5" />
+                  Download Terms
+                </motion.button>
+              </a>
             </div>
           </div>
         </motion.div>
