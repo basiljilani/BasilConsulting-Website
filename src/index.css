@@ -39,6 +39,29 @@
   .form-input-group {
     @apply flex items-center border-b-2 border-gray-200 py-2 focus-within:border-blue-600 transition-colors;
   }
+
+  /* Contact info link hover effect */
+  .contact-info-link {
+    @apply text-gray-600;
+    position: relative;
+    display: inline-block;
+  }
+
+  .contact-info-link::before {
+    content: attr(data-text);
+    position: absolute;
+    color: #FF6B00;
+    left: 0;
+    top: 0;
+    width: 0%;
+    overflow: hidden;
+    transition: width 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .contact-info-link:hover::before {
+    width: 100%;
+  }
 }
 
 /* Custom scrollbar styles */

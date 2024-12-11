@@ -55,31 +55,38 @@ export function Footer({ show = true }: FooterProps) {
           <div className="space-y-3">
             <div className="flex items-center space-x-3">
               <Mail className="h-5 w-5 text-orange-500" />
-              <a href="mailto:info@basilconsulting.net" className="text-gray-600 hover:text-orange-600">
+              <a href="mailto:info@basilconsulting.net" className="contact-info-link" data-text="info@basilconsulting.net">
                 info@basilconsulting.net
               </a>
             </div>
             <div className="flex items-center space-x-3">
               <Phone className="h-5 w-5 text-orange-500" />
-              <a href="tel:+925189555777" className="text-gray-600 hover:text-orange-600">
+              <a href="tel:+925189555777" className="contact-info-link" data-text="+92 51 89 55 777">
                 +92 51 89 55 777
               </a>
             </div>
             <div className="flex items-center space-x-3">
               <MapPin className="h-5 w-5 text-orange-500" />
-              <span className="text-gray-600">
+              <div className="contact-info-link" data-text="Evacuee Trust Complex.">
                 Evacuee Trust Complex.
-                <br />
+              </div>
+            </div>
+            <div className="flex items-center space-x-3">
+              <div className="w-5"></div>
+              <div className="contact-info-link" data-text="Agha Khan Rd, F-5/1, Islamabad, Pakistan">
                 Agha Khan Rd, F-5/1, Islamabad, Pakistan
-              </span>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Copyright */}
         <div className="mt-16 pt-8 border-t border-gray-800 text-center">
-          <p className="text-gray-500 text-sm">
-            {new Date().getFullYear()} Basil Consulting. All rights reserved.
+          <p className="text-gray-500 text-sm flex items-center justify-center space-x-1">
+            <span>©</span>
+            <span>{new Date().getFullYear()}</span>
+            <span>Basil Consulting.</span>
+            <span>All rights reserved.</span>
           </p>
         </div>
       </div>
