@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -9,6 +12,11 @@ export default {
         russo: ['Russo One', 'system-ui', 'sans-serif'],
       },
       colors: {
+        background: '#0F172A',
+        card: '#1E293B',
+        'gray-400': '#94A3B8',
+        'emerald-500': '#10B981',
+        'emerald-600': '#059669',
         primary: {
           50: '#eef2ff',
           100: '#e0e7ff',

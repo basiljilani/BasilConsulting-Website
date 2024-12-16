@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../store/authStore';
-import { AdminLayout } from '../../components/admin/Layout';
+import AdminLayout from '../../components/admin/AdminLayout';
 import { DashboardHome } from '../../components/admin/DashboardHome';
 
 export function AdminDashboard() {

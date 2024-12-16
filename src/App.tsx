@@ -49,6 +49,12 @@ function AppContent() {
           <Route path="/terminologies" element={<Terminologies />} />
           <Route path="/admin" element={<AdminLogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/content" element={<AdminDashboard />} />
+          <Route path="/admin/users" element={<AdminDashboard />} />
+          <Route path="/admin/analytics" element={<AdminDashboard />} />
+          <Route path="/admin/newsletter" element={<AdminDashboard />} />
+          <Route path="/admin/media" element={<AdminDashboard />} />
+          <Route path="/admin/settings" element={<AdminDashboard />} />
           <Route path="/admin/team" element={<TeamManagement />} />
         </Routes>
       </main>
