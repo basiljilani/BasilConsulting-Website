@@ -46,6 +46,37 @@
 - Database: MySQL on VPS
 - Reverse Proxy: Nginx on VPS
 
+## Authentication Setup
+
+### Current Status
+- Backend API is set up at `http://46.202.170.78/api`
+- Authentication endpoints:
+  - POST `/api/auth/login`
+  - GET `/api/auth/me` (protected)
+- Admin user created:
+  - Email: admin@basilconsulting.net
+  - Password: Admin@123
+
+### Known Issues
+1. Authentication is currently not working properly
+   - Login endpoint returns "Invalid credentials"
+   - Need to debug password hash comparison
+   - Logs need to be checked for detailed error messages
+
+### Next Steps
+1. Debug authentication issues:
+   - Check password hash comparison in login endpoint
+   - Verify database connection and user table structure
+   - Add proper error logging
+2. Test authentication flow end-to-end
+3. Implement proper CORS configuration for frontend access
+
+### Security Configuration
+- JWT-based authentication
+- Password hashing using bcrypt
+- Protected routes using middleware
+- CORS configured for AWS Amplify domain
+
 ## Important Commands
 ```bash
 # Restart Nginx

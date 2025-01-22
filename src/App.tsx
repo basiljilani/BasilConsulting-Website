@@ -11,7 +11,6 @@ import { BasilAI } from './pages/BasilAI';
 import { FinTechPulse } from './pages/FinTechPulse';
 import { Services } from './pages/Services';
 import { Partners } from './pages/Partners';
-import { Newsletter } from './pages/Newsletter';
 import { Documentation } from './pages/resources/Documentation';
 import { Support } from './pages/resources/Support';
 import { Privacy } from './pages/resources/Privacy';
@@ -41,7 +40,6 @@ function AppContent() {
           <Route path="/fintech-pulse" element={<FinTechPulse />} />
           <Route path="/services" element={<Services />} />
           <Route path="/partners" element={<Partners />} />
-          <Route path="/newsletter" element={<Newsletter />} />
           <Route path="/docs" element={<Documentation />} />
           <Route path="/support" element={<Support />} />
           <Route path="/privacy" element={<Privacy />} />
@@ -52,7 +50,6 @@ function AppContent() {
           <Route path="/admin/content" element={<AdminDashboard />} />
           <Route path="/admin/users" element={<AdminDashboard />} />
           <Route path="/admin/analytics" element={<AdminDashboard />} />
-          <Route path="/admin/newsletter" element={<AdminDashboard />} />
           <Route path="/admin/media" element={<AdminDashboard />} />
           <Route path="/admin/settings" element={<AdminDashboard />} />
           <Route path="/admin/team" element={<TeamManagement />} />

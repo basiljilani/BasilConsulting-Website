@@ -10,6 +10,7 @@ export default {
         sans: ['Inter var', 'system-ui', 'sans-serif'],
         display: ['Lexend', 'Inter var', 'system-ui', 'sans-serif'],
         russo: ['Russo One', 'system-ui', 'sans-serif'],
+        lato: ['Lato', 'system-ui', 'sans-serif'],
       },
       colors: {
         background: '#0F172A',

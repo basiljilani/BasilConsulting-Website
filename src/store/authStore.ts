@@ -1,62 +1,82 @@
 import { create } from 'zustand';
-import { supabase } from '../lib/supabase';
-import { User } from '@supabase/supabase-js';
+
+interface User {
+  id: string;
+  email: string;
+  role: string;
+}
 
 interface AuthState {
   user: User | null;
-  session: any;
+  token: string | null;
   loading: boolean;
   signIn: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
   checkUser: () => Promise<void>;
 }
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 export const useAuthStore = create<AuthState>((set) => ({
   user: null,
-  session: null,
+  token: null,
   loading: true,
+
   signIn: async (email: string, password: string) => {
-    // For development, simulate successful login
-    if (process.env.NODE_ENV === 'development') {
-      set({
-        user: {
-          id: '1',
-          email: email,
-          created_at: new Date().toISOString(),
-        } as User,
-        session: { access_token: 'fake-token' }
+    set({ loading: true });
+    try {
+      const response = await fetch(`${API_BASE_URL}/auth/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
       });
-      return;
-    }
 
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-    if (error) throw error;
-    set({ user: data.user, session: data.session });
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || 'Failed to sign in');
+      }
+
+      const data = await response.json();
+      set({ user: data.user, token: data.token, loading: false });
+      localStorage.setItem('auth_token', data.token);
+    } catch (error) {
+      set({ loading: false });
+      throw error;
+    }
   },
+
   signOut: async () => {
-    if (process.env.NODE_ENV === 'development') {
-      set({ user: null, session: null });
-      return;
-    }
-
-    await supabase.auth.signOut();
-    set({ user: null, session: null });
+    localStorage.removeItem('auth_token');
+    set({ user: null, token: null });
   },
+
   checkUser: async () => {
     try {
-      if (process.env.NODE_ENV === 'development') {
+      const token = localStorage.getItem('auth_token');
+      if (!token) {
         set({ loading: false });
         return;
       }
 
-      const { data: { user } } = await supabase.auth.getUser();
-      const { data: { session } } = await supabase.auth.getSession();
-      set({ user, session, loading: false });
+      const response = await fetch(`${API_BASE_URL}/auth/me`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        localStorage.removeItem('auth_token');
+        set({ user: null, token: null, loading: false });
+        return;
+      }
+
+      const user = await response.json();
+      set({ user, token, loading: false });
     } catch (error) {
-      set({ user: null, session: null, loading: false });
+      console.error('Error checking user:', error);
+      set({ user: null, token: null, loading: false });
     }
   },
 }));

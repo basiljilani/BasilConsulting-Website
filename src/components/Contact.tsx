@@ -1,140 +1,162 @@
-import { User, Mail, PencilLine, Send, FileText } from 'lucide-react';
+import { User, Mail, Building, Send, FileText, Copy, ExternalLink, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 export function Contact() {
+  const [copied, setCopied] = useState(false);
+  const email = 'info@basilconsulting.net';
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleEmailClick = () => {
+    const subject = encodeURIComponent('Business Inquiry: [Your Project Title]');
+    const body = encodeURIComponent(`Dear Basil Consulting Team,
+
+I hope this email finds you well. I am reaching out regarding [brief description of your project or inquiry].
+
+About Us:
+- Company/Organization: [Your Company Name]
+- Industry: [Your Industry]
+- Location: [Your Location]
+
+Project Details:
+- Timeline: [Expected Timeline]
+- Scope: [Brief Project Scope]
+- Objectives: [Key Objectives]
+
+Additional Information:
+[Any other relevant details about your project or specific requirements]
+
+I look forward to discussing this opportunity with you.
+
+Best regards,
+[Your Full Name]
+[Your Position]
+[Your Contact Information]`);
+
+    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+  };
+
   return (
-    <div className="min-h-[calc(100vh-64px)] bg-gray-50 flex items-center justify-center py-16 px-4">
-      <div className="max-w-6xl w-full mx-auto grid lg:grid-cols-2 gap-12 items-center">
+    <div className="h-[calc(100vh-64px)] bg-gradient-to-br from-gray-50 via-white to-gray-50 flex items-center justify-center px-4 overflow-hidden font-['DM_Sans']">
+      <div className="max-w-6xl w-full mx-auto grid lg:grid-cols-2 gap-8 items-start">
         {/* Left side - Welcome message */}
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="lg:pr-12"
+          className="lg:pr-8 flex items-center h-full"
         >
           <div className="relative">
-            <div className="relative">
-              <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-                Let's Create Something 
-                <span className="text-emerald-600"> Amazing</span>
-              </h1>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Whether you have a groundbreaking idea or a challenging problem,
-                we're here to help transform your vision into reality. Your journey to success begins with a simple message.
-              </p>
-              <div className="flex items-center space-x-6 text-gray-500">
+            <div className="relative space-y-8">
+              <div>
+                <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 tracking-tight leading-[1.1]">
+                  Let's Create<br />
+                  Something <span className="bg-gradient-to-r from-emerald-600 to-emerald-500 bg-clip-text text-transparent font-extrabold">Amazing</span>
+                </h1>
+                <p className="text-xl text-gray-600 leading-relaxed max-w-xl font-normal">
+                  We're excited to hear about your project! Send us a well-structured email using our template, 
+                  and we'll get back to you promptly with tailored solutions.
+                </p>
+              </div>
+              
+              <div className="flex items-center justify-between bg-white rounded-xl p-4 shadow-sm border border-gray-100 group hover:border-emerald-500 transition-all duration-200 max-w-xl">
                 <div className="flex items-center">
-                  <Mail className="h-5 w-5 mr-2 text-emerald-600" />
-                  <span>Quick Response</span>
+                  <Mail className="h-6 w-6 mr-3 text-emerald-600" />
+                  <span className="text-gray-600 text-lg font-medium">{email}</span>
                 </div>
-                <div className="flex items-center">
-                  <User className="h-5 w-5 mr-2 text-emerald-600" />
-                  <span>Personal Touch</span>
+                <div className="flex items-center space-x-2">
+                  <button
+                    onClick={handleCopyEmail}
+                    className="p-2 hover:bg-gray-50 rounded-lg transition-colors duration-200"
+                    title="Copy email"
+                  >
+                    {copied ? (
+                      <CheckCircle2 className="h-5 w-5 text-emerald-600" />
+                    ) : (
+                      <Copy className="h-5 w-5 text-gray-400 group-hover:text-emerald-600" />
+                    )}
+                  </button>
+                  <button
+                    onClick={handleEmailClick}
+                    className="p-2 hover:bg-gray-50 rounded-lg transition-colors duration-200"
+                    title="Open in email client"
+                  >
+                    <ExternalLink className="h-5 w-5 text-gray-400 group-hover:text-emerald-600" />
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </motion.div>
 
-        {/* Right side - Contact form */}
+        {/* Right side - Email Template */}
         <motion.div 
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="bg-white rounded-2xl shadow-sm p-8 relative">
-            <div className="relative">
-              <form className="space-y-6">
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                  className="group"
-                >
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      id="name"
-                      className="block w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 transition-all duration-200"
-                      placeholder="John Doe"
-                    />
-                    <User className="absolute right-3 top-3.5 h-5 w-5 text-gray-400 group-focus-within:text-emerald-500 transition-colors" />
+          <div className="bg-white rounded-2xl shadow-sm p-6 relative border border-gray-100">
+            <div className="space-y-4">
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                <div className="flex items-center space-x-2 mb-3">
+                  <FileText className="h-5 w-5 text-emerald-600" />
+                  <h3 className="text-lg font-semibold text-gray-900 tracking-tight">Email Structure</h3>
+                </div>
+                <div className="space-y-3 text-gray-600">
+                  <div className="bg-gray-50 p-3 rounded-xl">
+                    <p className="font-medium text-gray-900 mb-1 tracking-tight">Subject Line</p>
+                    <p className="text-sm">Business Inquiry: [Your Project Title]</p>
                   </div>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                  className="group"
-                >
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                  <div className="relative">
-                    <input
-                      type="email"
-                      id="email"
-                      className="block w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 transition-all duration-200"
-                      placeholder="john@example.com"
-                    />
-                    <Mail className="absolute right-3 top-3.5 h-5 w-5 text-gray-400 group-focus-within:text-emerald-500 transition-colors" />
+                  <div className="bg-gray-50 p-3 rounded-xl">
+                    <p className="font-medium text-gray-900 mb-1 tracking-tight">Introduction</p>
+                    <p className="text-sm">Brief overview of why you're reaching out</p>
                   </div>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                  className="group"
-                >
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">Subject</label>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      id="subject"
-                      className="block w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 transition-all duration-200"
-                      placeholder="What's this about?"
-                    />
-                    <FileText className="absolute right-3 top-3.5 h-5 w-5 text-gray-400 group-focus-within:text-emerald-500 transition-colors" />
+                  <div className="bg-gray-50 p-3 rounded-xl">
+                    <p className="font-medium text-gray-900 mb-1 tracking-tight">Company Details</p>
+                    <ul className="text-sm list-disc list-inside">
+                      <li>Company/Organization Name</li>
+                      <li>Industry</li>
+                      <li>Location</li>
+                    </ul>
                   </div>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 }}
-                  className="group"
-                >
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                  <div className="relative">
-                    <textarea
-                      id="message"
-                      rows={4}
-                      className="block w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 transition-all duration-200 min-h-[120px]"
-                      placeholder="Share your thoughts..."
-                    />
-                    <PencilLine className="absolute right-3 top-3.5 h-5 w-5 text-gray-400 group-focus-within:text-emerald-500 transition-colors" />
+                  <div className="bg-gray-50 p-3 rounded-xl">
+                    <p className="font-medium text-gray-900 mb-1 tracking-tight">Project Specifics</p>
+                    <ul className="text-sm list-disc list-inside">
+                      <li>Timeline Expectations</li>
+                      <li>Project Scope</li>
+                      <li>Key Objectives</li>
+                    </ul>
                   </div>
-                </motion.div>
+                </div>
+              </motion.div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.7 }}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7 }}
+                className="pt-2"
+              >
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={handleEmailClick}
+                  className="w-full bg-emerald-500 text-white py-2.5 px-6 rounded-xl hover:bg-emerald-600 focus:ring-2 focus:ring-emerald-100 transition-all duration-200 flex items-center justify-center space-x-2 font-medium"
                 >
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    type="submit"
-                    className="w-full bg-emerald-500 text-white py-3 px-6 rounded-xl hover:bg-emerald-600 focus:ring-2 focus:ring-emerald-100 transition-all duration-200 flex items-center justify-center space-x-2"
-                  >
-                    <span className="relative flex items-center">
-                      Send Message
-                      <Send className="ml-2 h-4 w-4" />
-                    </span>
-                  </motion.button>
-                </motion.div>
-              </form>
+                  <span className="relative flex items-center">
+                    Compose Email
+                    <Send className="ml-2 h-4 w-4" />
+                  </span>
+                </motion.button>
+              </motion.div>
             </div>
           </div>
         </motion.div>

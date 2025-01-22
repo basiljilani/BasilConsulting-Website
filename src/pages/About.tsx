@@ -71,10 +71,92 @@ export function About() {
               At Basil Consulting, we don't just solve problems—we cultivate pathways for a better future."
             </blockquote>
             <div className="mt-4 text-gray-600">
-              - Basil Jilani, Founder & CEO
+              Basil Jilani, Founder & CEO
             </div>
           </motion.div>
         </div>
+
+        {/* About the Founder Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mt-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <div className="relative overflow-hidden bg-gradient-to-br from-white to-indigo-50 rounded-3xl shadow-xl border border-indigo-100">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiM2MzY2ZjEiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDMwaC0yVjBoMnYzMHptLTIgMEgydjJoMzJ2LTJ6bTAgMnYyOGgydi0yOGgtMnptMi0ydi0yOGgtMnYyOGgyeiIvPjwvZz48L2c+PC9zdmc+')] opacity-50" />
+            
+            <div className="relative p-8 sm:p-12">
+              <div className="flex flex-col items-center mb-10">
+                <motion.div
+                  initial={{ scale: 0.5, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                  viewport={{ once: true }}
+                  className="w-20 h-20 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-full flex items-center justify-center mb-6"
+                >
+                  <span className="text-4xl text-white font-bold">B</span>
+                </motion.div>
+                <h2 className="text-3xl font-bold text-gray-900 text-center mb-2 font-lexend">About the Founder</h2>
+                <div className="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full"></div>
+              </div>
+
+              <div className="space-y-6 text-gray-600 leading-relaxed max-w-3xl mx-auto font-lato">
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  viewport={{ once: true }}
+                  className="text-lg font-semibold"
+                >
+                  At Basil Consulting, the story starts with an unconventional path—a story of grit, determination, and an unwavering belief in possibilities. Founded by a self-taught FinTech and AI visionary, the company embodies the spirit of breaking barriers and building bridges between the complex world of technology and the practical needs of businesses.
+                </motion.p>
+                
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  viewport={{ once: true }}
+                  className="text-lg font-semibold"
+                >
+                  The founder's journey is nothing short of inspiring. With a non-technical background in finance, he didn't let a lack of formal training hold him back. Instead, he embraced the challenge head-on, teaching himself programming, artificial intelligence, and cutting-edge tools from scratch. It wasn't easy, but that's exactly what makes the foundation of Basil Consulting so unique—an unshakable resolve to turn challenges into opportunities and complexity into clarity.
+                </motion.p>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  viewport={{ once: true }}
+                  className="text-lg font-semibold"
+                >
+                  This same energy fuels Basil Consulting. It's not just about solving problems; it's about creating possibilities. From helping businesses navigate the fast-evolving FinTech landscape to crafting innovative AI-powered solutions, the company thrives on delivering meaningful, impactful results.
+                </motion.p>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  viewport={{ once: true }}
+                  className="text-lg font-semibold"
+                >
+                  At its core, Basil Consulting is more than a company; it's a promise—a promise that no matter your starting point, transformation is always within reach. Whether you're a business looking to innovate or someone seeking inspiration, the story behind Basil Consulting is proof that grit and determination can achieve extraordinary things.
+                </motion.p>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                  viewport={{ once: true }}
+                  className="text-lg font-semibold"
+                >
+                  Here, we approach every project with high energy, deep care, and a commitment to creating something that truly matters. Welcome to Basil Consulting, where possibilities come alive.
+                </motion.p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
 
         {/* Core Values */}
         <motion.div
