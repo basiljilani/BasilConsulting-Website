@@ -80,7 +80,11 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block text-gray-600 hover:text-gray-900"
-                  onClick={onClose}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.open('https://basilconsulting.beehiiv.com/', '_blank', 'noopener,noreferrer');
+                    onClose();
+                  }}
                 >
                   Newsletter
                 </a>
