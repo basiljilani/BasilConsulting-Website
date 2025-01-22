@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, ArrowRight, Sparkles, Zap } from 'lucide-react';
+import { ChevronDown, ArrowRight } from 'lucide-react';
 
 export default function Navbar() {
   const [showCategories, setShowCategories] = useState(false);
