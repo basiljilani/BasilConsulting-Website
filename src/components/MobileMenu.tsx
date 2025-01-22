@@ -75,13 +75,15 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 RESOURCES
               </h3>
               <div className="space-y-4">
-                <Link 
-                  to="/newsletter" 
+                <a 
+                  href="https://basilconsulting.beehiiv.com/" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="block text-gray-600 hover:text-gray-900"
                   onClick={onClose}
                 >
                   Newsletter
-                </Link>
+                </a>
                 <Link 
                   to="/docs" 
                   className="block text-gray-600 hover:text-gray-900"
