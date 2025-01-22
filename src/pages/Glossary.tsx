@@ -1,6 +1,7 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Search, Filter, BookOpen, Database, Brain, Layers } from 'lucide-react';
+import { Search, Filter, BookOpen, Database, Brain, Layers, ChevronDown } from 'lucide-react';
+import { useSearchParams } from 'react-router-dom';
 
 // Comprehensive Terminology Categories
 const terminologyCategories = [
@@ -65,7 +66,7 @@ const terminologyCategories = [
   },
   {
     id: 'crossover',
-    title: "FinTech + Machine Learning Crossovers",
+    title: "FinTech + ML Crossovers",
     icon: Layers,
     terms: [
       { name: "Fraud Detection", definition: "Using ML models to identify fraudulent activities in financial transactions." },
@@ -82,9 +83,35 @@ const terminologyCategories = [
   }
 ];
 
-export function Terminologies() {
-  const [activeCategory, setActiveCategory] = useState(terminologyCategories[0].id);
+export function Glossary() {
+  const [searchParams] = useSearchParams();
+  const categoryFromUrl = searchParams.get('category');
+  
+  const [activeCategory, setActiveCategory] = useState(
+    categoryFromUrl || terminologyCategories[0].id
+  );
   const [searchTerm, setSearchTerm] = useState('');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Handle click outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Update active category when URL changes
+  useEffect(() => {
+    if (categoryFromUrl && terminologyCategories.some(cat => cat.id === categoryFromUrl)) {
+      setActiveCategory(categoryFromUrl);
+    }
+  }, [categoryFromUrl]);
 
   const currentCategory = useMemo(() => 
     terminologyCategories.find(cat => cat.id === activeCategory), 
@@ -107,9 +134,9 @@ export function Terminologies() {
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl lg:text-5xl font-bold mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6"
           >
-            Technology Terminologies
+            Glossary
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -125,8 +152,51 @@ export function Terminologies() {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Category Sidebar */}
-          <div className="space-y-4">
+          {/* Mobile Category Dropdown */}
+          <div className="md:hidden relative" ref={dropdownRef}>
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="w-full flex items-center justify-between px-6 py-3 bg-white rounded-xl shadow-sm border border-gray-200/60"
+            >
+              <span className="text-gray-600 text-lg">Category</span>
+              <ChevronDown 
+                className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${
+                  isDropdownOpen ? 'transform rotate-180' : ''
+                }`} 
+              />
+            </button>
+            {isDropdownOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                className="absolute z-10 w-full mt-2 bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden"
+              >
+                {terminologyCategories.map((category) => (
+                  <button
+                    key={category.id}
+                    onClick={() => {
+                      setActiveCategory(category.id);
+                      setIsDropdownOpen(false);
+                    }}
+                    className={`w-full flex items-start px-6 py-4 hover:bg-gray-50 transition-colors ${
+                      activeCategory === category.id ? 'bg-blue-50 text-blue-600' : 'text-gray-700'
+                    }`}
+                  >
+                    <category.icon className={`flex-shrink-0 w-5 h-5 mr-4 mt-1 ${
+                      activeCategory === category.id ? 'text-blue-600' : 'text-gray-500'
+                    }`} />
+                    <span className="text-base">
+                      {category.displayTitle || category.title}
+                    </span>
+                  </button>
+                ))}
+              </motion.div>
+            )}
+          </div>
+
+          {/* Desktop Category Sidebar */}
+          <div className="hidden md:block space-y-4">
             {terminologyCategories.map((category) => (
               <motion.div
                 key={category.id}
@@ -134,25 +204,18 @@ export function Terminologies() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.1 * terminologyCategories.findIndex(c => c.id === category.id) }}
                 className={`
-                  flex items-center p-4 rounded-lg cursor-pointer transition-all duration-300
-                  ${activeCategory === category.id 
-                    ? 'bg-indigo-600 text-white shadow-lg' 
-                    : 'bg-white text-gray-700 hover:bg-gray-100 shadow-md'}
+                  flex items-start p-4 rounded-lg cursor-pointer transition-all duration-300
+                  ${activeCategory === category.id
+                    ? 'bg-indigo-50 text-indigo-600 shadow-sm'
+                    : 'hover:bg-gray-50 text-gray-700'
+                  }
                 `}
                 onClick={() => setActiveCategory(category.id)}
               >
-                <div className={`
-                  p-2 rounded-lg mr-4 
-                  ${activeCategory === category.id 
-                    ? 'bg-white/20' 
-                    : 'bg-indigo-100'}
-                `}>
-                  <category.icon className={`
-                    h-6 w-6 
-                    ${activeCategory === category.id ? 'text-white' : 'text-indigo-600'}
-                  `} />
-                </div>
-                <span className="font-semibold">{category.title}</span>
+                <category.icon className="w-6 h-6 mr-3 mt-1" />
+                <span className="font-medium">
+                  {category.displayTitle || category.title}
+                </span>
               </motion.div>
             ))}
           </div>
@@ -193,4 +256,4 @@ export function Terminologies() {
   );
 }
 
-export default Terminologies;
+export default Glossary;

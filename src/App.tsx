@@ -15,7 +15,7 @@ import { Documentation } from './pages/resources/Documentation';
 import { Support } from './pages/resources/Support';
 import { Privacy } from './pages/resources/Privacy';
 import { Terms } from './pages/resources/Terms';
-import { Terminologies } from './pages/Terminologies';
+import { Glossary } from './pages/Glossary';
 import { AdminLogin } from './pages/admin/Login';
 import { AdminDashboard } from './pages/admin/Dashboard';
 import { TeamManagement } from './pages/admin/TeamManagement';
@@ -44,7 +44,7 @@ function AppContent() {
           <Route path="/support" element={<Support />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
-          <Route path="/terminologies" element={<Terminologies />} />
+          <Route path="/glossary" element={<Glossary />} />
           <Route path="/admin" element={<AdminLogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/content" element={<AdminDashboard />} />

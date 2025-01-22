@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, ArrowRight } from 'lucide-react';
+import { ChevronDown, ArrowRight, Menu } from 'lucide-react';
+import MobileMenu from './MobileMenu';
 
 export default function Navbar() {
   const [showCategories, setShowCategories] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -34,7 +36,8 @@ export default function Navbar() {
               Basil Consulting<span className="logo-dot bg-orange-500" />
             </Link>
 
-            <div className="flex items-center space-x-8">
+            {/* Desktop Menu */}
+            <div className="hidden lg:flex items-center space-x-8">
               <div className="relative categories-menu">
                 <button
                   onClick={handleButtonClick}
@@ -76,10 +79,19 @@ export default function Navbar() {
                 </Link>
               </motion.div>
             </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(true)}
+              className="lg:hidden rounded-md p-2 text-gray-400 hover:text-gray-500 hover:bg-gray-100"
+            >
+              <Menu className="h-6 w-6" />
+            </button>
           </div>
         </div>
       </nav>
 
+      {/* Categories Dropdown */}
       <AnimatePresence>
         {showCategories && (
           <div className="fixed inset-0 flex items-start justify-center pt-16 z-[90]">
@@ -234,6 +246,12 @@ export default function Navbar() {
           </div>
         )}
       </AnimatePresence>
+
+      {/* Mobile Menu */}
+      <MobileMenu 
+        isOpen={isMobileMenuOpen} 
+        onClose={() => setIsMobileMenuOpen(false)} 
+      />
     </>
   );
 }
