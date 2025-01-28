@@ -178,6 +178,15 @@ export default function Navbar() {
                           </div>
                         </Link>
                         <Link 
+                          to="/careers" 
+                          className="group block text-base transition-all duration-300"
+                          onClick={() => setShowCategories(false)}
+                        >
+                          <div className="text-gray-600 hover:text-purple-600 transform hover:translate-x-2 transition-all duration-300 ease-out">
+                            <span className="font-medium relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-purple-500 after:to-purple-400 group-hover:after:w-full after:transition-all after:duration-300">Careers</span>
+                          </div>
+                        </Link>
+                        <Link 
                           to="/privacy" 
                           className="group block text-base transition-all duration-300"
                           onClick={() => setShowCategories(false)}

@@ -19,6 +19,7 @@ import { Glossary } from './pages/Glossary';
 import { AdminLogin } from './pages/admin/Login';
 import { AdminDashboard } from './pages/admin/Dashboard';
 import { TeamManagement } from './pages/admin/TeamManagement';
+import Careers from './pages/Careers';
 
 function AppContent() {
   const location = useLocation();
@@ -42,6 +43,7 @@ function AppContent() {
           <Route path="/partners" element={<Partners />} />
           <Route path="/docs" element={<Documentation />} />
           <Route path="/support" element={<Support />} />
+          <Route path="/careers" element={<Careers />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/glossary" element={<Glossary />} />
