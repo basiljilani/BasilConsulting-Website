@@ -58,7 +58,8 @@ export function Footer({ show = true }: FooterProps) {
                 { text: 'Services', href: '/services' },
                 { text: 'Products', href: '/products' },
                 { text: 'Documentation', href: '/docs' },
-                { text: 'Support', href: '/support' }
+                { text: 'Support', href: '/support' },
+                { text: 'Careers', href: '/careers' }
               ].map((link, index) => (
                 <li key={index}>
                   <Link 
@@ -105,7 +106,7 @@ export function Footer({ show = true }: FooterProps) {
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-gray-800">
           <p className="text-gray-500 text-sm text-center">
-            {new Date().getFullYear()} Basil Consulting. All rights reserved.
+            &copy; {new Date().getFullYear()} Basil Consulting. All rights reserved.
           </p>
         </div>
       </div>
