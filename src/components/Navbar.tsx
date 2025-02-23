@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, ArrowRight, Menu } from 'lucide-react';
+import { ChevronDown, ArrowRight, Menu, UtensilsCrossed } from 'lucide-react';
 import MobileMenu from './MobileMenu';
 
 export default function Navbar() {
@@ -226,14 +226,14 @@ export default function Navbar() {
                     </Link>
 
                     <Link 
-                      to="/basil-ai" 
+                      to="/foodo" 
                       className="group block"
                       onClick={() => setShowCategories(false)}
                     >
                       <div className="p-4 rounded-lg hover:bg-white transition-all duration-200 transform hover:shadow-lg hover:-translate-y-0.5">
                         <div>
-                          <p className="text-sm font-medium text-blue-600 group-hover:text-blue-700">Basil AI</p>
-                          <p className="mt-1 text-sm text-gray-500 group-hover:text-gray-600">Advanced AI solutions</p>
+                          <p className="text-sm font-medium text-blue-600 group-hover:text-blue-700">Foodo</p>
+                          <p className="mt-1 text-sm text-gray-500 group-hover:text-gray-600">Restaurant marketplace</p>
                         </div>
                       </div>
                     </Link>

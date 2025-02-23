@@ -163,26 +163,11 @@ export function Products(): JSX.Element {
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </motion.button>
                   </Link>
-                  <Link to="/fintech-pulse" className="flex-1">
-                    <motion.button
-                      whileHover={{ 
-                        backgroundColor: "rgba(255, 255, 255, 0.1)",
-                        scale: 1.02,
-                        borderColor: "rgba(255, 255, 255, 0.8)"
-                      }}
-                      whileTap={{ scale: 0.98 }}
-                      transition={{ duration: 0.2 }}
-                      className="w-full px-6 py-3 rounded-xl border-2 border-white/50 text-white font-semibold flex items-center justify-center group"
-                    >
-                      Explore Platform
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </motion.button>
-                  </Link>
                 </div>
               </div>
             </motion.div>
 
-            {/* Basil AI Card */}
+            {/* Foodo Card */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -190,13 +175,12 @@ export function Products(): JSX.Element {
               className="relative"
             >
               <div className="relative bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-gray-800">
-                <h3 className="text-3xl font-bold text-white mb-4 text-center">Basil AI</h3>
+                <h3 className="text-3xl font-bold text-white mb-4 text-center">Foodo</h3>
                 <p className="text-gray-300 mb-8 min-h-[80px] text-center">
-                  Advanced AI solutions that drive innovation and automation across your organization,
-                  enabling smarter decisions and enhanced operational efficiency.
+                  Your ultimate restaurant marketplace platform. Order from the best local restaurants with fast delivery and amazing deals.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link to="/basil-ai" className="flex-1">
+                  <Link to="/foodo" className="flex-1">
                     <motion.button
                       whileHover={{ 
                         backgroundColor: "rgba(31, 41, 55, 0.8)",
@@ -210,26 +194,6 @@ export function Products(): JSX.Element {
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </motion.button>
                   </Link>
-                  <a 
-                    href="https://main.d36bfg0wwu7y8d.amplifyapp.com/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex-1"
-                  >
-                    <motion.button
-                      whileHover={{ 
-                        backgroundColor: "rgba(255, 255, 255, 0.1)",
-                        scale: 1.02,
-                        borderColor: "rgba(255, 255, 255, 0.8)"
-                      }}
-                      whileTap={{ scale: 0.98 }}
-                      transition={{ duration: 0.2 }}
-                      className="w-full px-6 py-3 rounded-xl border-2 border-white/50 text-white font-semibold flex items-center justify-center group"
-                    >
-                      Explore Platform
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </motion.button>
-                  </a>
                 </div>
               </div>
             </motion.div>

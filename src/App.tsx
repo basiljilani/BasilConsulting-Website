@@ -7,7 +7,7 @@ import { About } from './pages/About';
 import { Contact } from './components/Contact';
 import { Team } from './pages/Team';
 import { Products } from './pages/Products';
-import { BasilAI } from './pages/BasilAI';
+import { Foodo } from './pages/Foodo';
 import { FinTechPulse } from './pages/FinTechPulse';
 import { Services } from './pages/Services';
 import { Partners } from './pages/Partners';
@@ -37,7 +37,7 @@ function AppContent() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/team" element={<Team />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/basil-ai" element={<BasilAI />} />
+          <Route path="/foodo" element={<Foodo />} />
           <Route path="/fintech-pulse" element={<FinTechPulse />} />
           <Route path="/services" element={<Services />} />
           <Route path="/partners" element={<Partners />} />

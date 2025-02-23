@@ -136,13 +136,13 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   </div>
                 </Link>
                 <Link 
-                  to="/basil-ai" 
+                  to="/foodo" 
                   className="block"
                   onClick={onClose}
                 >
                   <div className="rounded-lg hover:bg-gray-50 transition-colors duration-200">
-                    <p className="text-blue-600 font-medium">Basil AI</p>
-                    <p className="text-gray-500 text-sm">Advanced AI solutions</p>
+                    <p className="text-blue-600 font-medium">Foodo</p>
+                    <p className="text-gray-500 text-sm">Restaurant marketplace</p>
                   </div>
                 </Link>
               </div>
